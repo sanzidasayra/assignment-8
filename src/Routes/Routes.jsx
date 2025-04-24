@@ -39,7 +39,7 @@ export const router = createBrowserRouter([
         },
         
         {       
-            path: '/doctorsdetails/:id',
+            path: '../doctorsdetails/:id',
             loader: () => {
               return new Promise(resolve => {
                 setTimeout(() => {
