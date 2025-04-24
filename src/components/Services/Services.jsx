@@ -14,25 +14,25 @@ const Services = () => {
         </div>
 
         <div className='flex gap-6 justify-center mb-20'>
-            <div className='border border-gray-100 py-10 px-12 w-[20em] rounded-2xl shadow-xl'>
+            <div className='border border-gray-100 dark:border-gray-700 py-10 px-12 w-[20em] rounded-2xl shadow-xl'>
                 <img src={img} alt="" />
                 <CountUp className='font-extrabold text-[64px] ' end={199} duration={5} suffix='+'/>
                 <p className='font-semibold text-2xl'>Total Doctors</p>
             </div>
 
-            <div className='border border-gray-100 py-10 px-12 w-[20em] rounded-2xl shadow-xl'>
+            <div className='border border-gray-100 dark:border-gray-700 py-10 px-12 w-[20em] rounded-2xl shadow-xl'>
                 <img src={img2} alt="" />
                 <CountUp className='font-extrabold text-[64px]' end={467} duration={5} suffix='+'/>
                 <p className='font-semibold text-2xl'>Total Reviews</p>
             </div>
 
-            <div className='border border-gray-100 py-10 px-12 w-[20em] rounded-2xl shadow-xl'>
+            <div className='border border-gray-100 dark:border-gray-700 py-10 px-12 w-[20em] rounded-2xl shadow-xl'>
                 <img src={img3} alt="" />
                 <CountUp className='font-extrabold text-[64px]' end={1900} duration={7} suffix='+'/>
                 <p className='font-semibold text-2xl'>Patients</p>
             </div>
 
-            <div className='border border-gray-100 py-10 px-12 w-[20em] rounded-2xl shadow-xl'>
+            <div className='border border-gray-100 dark:border-gray-700 py-10 px-12 w-[20em] rounded-2xl shadow-xl'>
                 <img src={img4} alt="" />
                 <CountUp className='font-extrabold text-[64px]' end={300} duration={5} suffix='+'/>
                 <p className='font-semibold text-2xl'>Total Stuffs</p>

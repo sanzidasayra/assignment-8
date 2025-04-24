@@ -13,25 +13,25 @@ const getStoredAppointment = () => {
 
 }
 
-const addToStoreDB = (id) => {
-    
+const addToStoreDB = (id, doctorName) => {
     const storedAppointmentData = getStoredAppointment();
 
-    if(storedAppointmentData.includes(id)){
-        toast.error("already exist")
-    }
-    else{
+    return new Promise((resolve) => {
+        if (storedAppointmentData.includes(id)) {
+            toast.error("Appointment already exists");
+            resolve(false);
+        } else {
+            storedAppointmentData.push(id);
+            const data = JSON.stringify(storedAppointmentData);
+            localStorage.setItem("appointmentList", data);
+            toast.success(`Booked appointment with ${doctorName} successfully`);
+            resolve(true);
+        }
+    });
+};
 
-        storedAppointmentData.push(id);
-        const data = JSON.stringify(storedAppointmentData);
-
-        localStorage.setItem("appointmentList", data)
-        toast.success("Booked Succesfully")
 
 
-
-    }
-}
 
 export const removeFromStoreDB = (id) => {
     const stored = getStoredAppointment();

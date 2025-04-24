@@ -50,14 +50,14 @@ const AppointmentList = () => {
 
   const getChartData = () => {
     return appointmentList.map(doc => ({
-      name: doc.name.split(" ")[1] || doc.name,
+      name: doc.name,
       fee: doc.consultationFee
     }));
   };
 
   if (appointmentList.length === 0) {
     return (
-      <div className='border border-gray-100 bg-gray-50 shadow-2xl max-w-10/12 mx-auto rounded-3xl pt-16 pb-16'>
+      <div className='border border-gray-100 bg-gray-50   shadow-2xl max-w-10/12 mx-auto rounded-3xl pt-16 pb-16'>
         <h1 className='font-extrabold text-[32px] text-center pt-16 pb-4'>No Appointments Found</h1>
         <p className='font-medium text-[16px] text-center pb-6 px-32'>You haven't booked any appointments yet.</p>
         <div className='flex justify-center pb-10'>
@@ -79,7 +79,7 @@ const AppointmentList = () => {
         Our platform connects you with verified, experienced doctors across various specialties — all at your convenience.
       </p>
 
-      <div className="bg-gray-50 rounded-lg p-6 mb-10 shadow-md">
+      <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 mb-10 shadow-md">
         <h2 className="text-xl font-semibold mb-4 text-center">Consultation Fee Overview</h2>
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={getChartData()} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
@@ -97,7 +97,7 @@ const AppointmentList = () => {
       </div>
 
       {appointmentList.map(doctor => (
-        <div key={doctor.id} className="bg-white shadow-md rounded-lg p-6 mb-6">
+        <div key={doctor.id} className="bg-white dark:bg-gray-900 shadow-md rounded-lg p-6 mb-6">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
             <div>
               <h2 className="font-bold text-lg">{doctor.name}</h2>

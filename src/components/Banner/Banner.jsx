@@ -5,8 +5,8 @@ import img2 from '../../assets/C001-assets/doctor-checking-patient-with-stethosc
 
 const Banner = () => {
     return (
-        <div className='border border-white shadow-2xl py-16 px-[160px] rounded-3xl  bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200
-    dark:from-gray-700 dark:via-gray-700 dark:to-gray-600 mt-10 '>
+        <div className='border border-white dark:border-gray-700 shadow-2xl py-16 px-[160px] rounded-3xl bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200
+    dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 mt-10 '>
 
     
             <div>

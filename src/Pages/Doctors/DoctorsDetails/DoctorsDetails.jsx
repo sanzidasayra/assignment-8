@@ -18,6 +18,9 @@ const DoctorsDetails = () => {
     const handleGoHome = () => {
         navigate('/');
     };
+    const today = new Date().toLocaleString('en-US', { weekday: 'long' });
+
+  
 
     useEffect(() => {
         const hash = window.location.hash;
@@ -26,7 +29,7 @@ const DoctorsDetails = () => {
           if (element) {
             setTimeout(() => {
               element.scrollIntoView({ behavior: 'smooth' });
-            }, 100); // slight delay ensures the DOM has rendered
+            }, 100); 
           }
         }
       }, []);
@@ -42,10 +45,10 @@ const DoctorsDetails = () => {
     if (!singleDoctor) {
         return <>
 
-            <div className='border border-gray-100 bg-gray-50 shadow-2xl max-w-10/12 mx-auto rounded-3xl pb-16 pt-16'>
+            <div className='border border-gray-100 bg-gray-50  shadow-2xl max-w-10/12 mx-auto rounded-3xl pb-16 pt-16'>
                 <h1 className='font-extrabold text-[32px] text-center pt-16 pb-4  '>No Doctorts Found</h1>
                 <p className='font-medium text-[16px] text-center pb-6 px-32 '> Go to Home page to find available doctors</p>
-                <div className='flex justify-center mb-10'>
+                <div className='flex justify-center mb-10 '>
                     <button
                         className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300"
                         onClick={handleGoHome}
@@ -57,23 +60,32 @@ const DoctorsDetails = () => {
         </>
     }
 
-    const { image, name, education, workingAt, registrationNumber, availability, consultationFee, availabilityStatus } = singleDoctor;
+    // eslint-disable-next-line no-unused-vars
+    const { image, name, education, designation, workingAt, registrationNumber, availability, consultationFee, availabilityStatus } = singleDoctor;
+    const isAvailableToday = availability
+    .split(',')
+    .map(day => day.trim().toLowerCase())
+    .includes(today.toLowerCase());
 
-
-    const handleBookAppointment = id => {
-
-        addToStoreDB(id);
-        navigate('/appointmentList');
-
-    }
-
+    const handleBookAppointment = (id, doctorName) => {
+        addToStoreDB(id, doctorName).then(success => {
+            if (success) {
+                navigate('/appointmentList');
+            } else {
+                console.log("Appointment already exists, no navigation.");
+            }
+        }).catch(error => {
+            console.error("An error occurred while booking the appointment:", error);
+        });
+    };
+    
 
 
 
 
     return (
         <div>
-            <div id='doctorDetailsSection' className='border border-gray-100 bg-gray-50 shadow-2xl max-w-10/12 mx-auto rounded-3xl'>
+            <div id='doctorDetailsSection' className='border border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 shadow-2xl max-w-10/12 mx-auto rounded-3xl'>
                 <h1 className='font-extrabold text-[32px] text-center pt-16 pb-4'>Doctor’s Profile Details</h1>
                 <p className='font-medium text-[16px] text-center pb-16 px-32'>
                     Discover detailed profiles of our experienced and verified doctors. From specialties and qualifications to years of experience and availability,
@@ -81,18 +93,19 @@ const DoctorsDetails = () => {
                 </p>
             </div>
 
-            <div className='flex border max-w-10/12 mx-auto mt-8 border-gray-100 bg-gray-50 rounded-3xl shadow-2xl py-14 '>
+            <div className='flex border max-w-10/12 mx-auto mt-8 border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 rounded-3xl shadow-2xl py-14 '>
                 <div>
                     <img src={image} alt={name} className=" w-md ml-14 mx-auto rounded-2xl" />
                 </div>
                 <div className="pl-8">
                     <h1 className="font-bold text-[32px]">{name}</h1>
-                    <p className="font-medium text-xl">{education}</p>
-                    <h4 className="font-semibold text-xl"><span className='font-normal'>Working at</span><br />{workingAt}</h4>
+                    <p className="font-light text-xl">{education}</p>
+                    <p className="text-lg font-light text-gray-600 pb-2">{designation}</p> 
+                    <h4 className="font-semibold text-xl flex gap-2 pb-4"><span className='font-normal'>Working at:</span>{workingAt}</h4>
                     <hr className='border-dashed opacity-30' />
-                    <p className="">Registration No: {registrationNumber}</p>
-                    <hr className='border-dashed opacity-30' />
-                    <p className="font-bold text-[16px]">
+                    <p className="pt-2 pb-2">⨁ Registration No: {registrationNumber}</p>
+                    <hr className='border-dashed opacity-30 pb-2' />
+                    <p className="font-bold text-[16px] pb-2">
                         Availability:
                         {availability.split(',').map((day, index) => (
                             <button
@@ -103,18 +116,20 @@ const DoctorsDetails = () => {
                             </button>
                         ))}
                     </p>
-                    <p className="font-bold te0xt-[16px]">Consultation Fee: <span className='font-semibold'> Taka: </span> <span className='font-medium'> {consultationFee} </span>  <span className='font-medium'>(incl. Vat) Per consultation</span></p>
+                    <p className="font-bold te0xt-[16px]">Consultation Fee: <span className='font-semibold text-blue-500'> Taka: </span> <span className='font-medium text-blue-500'> {consultationFee} </span>  <span className='font-medium '>(incl. Vat) <span className='text-blue-500'>Per consultation</span></span></p>
                 </div>
             </div>
 
-            <div className='border max-w-10/12 mx-auto border-gray-100 bg-gray-50 rounded-3xl shadow-2xl px-10 mt-7 mb-20'>
+            <div className='border max-w-10/12 mx-auto border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 rounded-3xl shadow-2xl px-10 mt-7 mb-20'>
                 <h1 className='font-bold text-2xl pt-8 pb-8 text-center'>Book an Appointment</h1>
                 <hr className='border-dashed opacity-20' />
 
                 <div className="flex flex-col gap-3 pt-4 pb-4">
                     <div className='flex justify-between items-center flex-wrap gap-2'>
                         <h1 className='font-bold text-xl'>Availability Status</h1>
-                        <button className="btn btn-outline btn-success">{availabilityStatus}</button>
+                        <button className={`btn btn-outline ${isAvailableToday ? 'btn-success' : 'btn-error'}`}>
+  {isAvailableToday ? 'Available Today' : 'Not Available Today'}
+</button>
                     </div>
 
                     <button className="flex bg-yellow-100 rounded-sm p-2 w-full md:w-auto text-left">
@@ -123,7 +138,9 @@ const DoctorsDetails = () => {
                     </button>
                 </div>
                 <div className='flex justify-center mb-14'>
-                    <button onClick={() => handleBookAppointment(id)} className="btn btn-active bg-[#176AE5] text-white py-3.5 px-[674px]">Book Appointment Now</button>
+                {console.log("Doctor name:", name)}
+
+                    <button onClick={() => handleBookAppointment(id, name)} className="btn btn-active bg-[#176AE5] text-white py-3.5 px-[674px]">Book Appointment Now</button>
                 </div>
             </div>
 

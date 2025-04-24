@@ -40,8 +40,17 @@ export const router = createBrowserRouter([
         
         {       
             path: '/doctorsdetails/:id',
-            loader: () => fetch('../doctorsData.json'),
-            Component: DoctorsDetails,
+            loader: () => {
+              return new Promise(resolve => {
+                setTimeout(() => {
+                  resolve(fetch('/doctorsData.json'));
+                }, 1000); 
+              });
+            },
+
+           Component: DoctorsDetails,
+        
+    
 
         }
       ]

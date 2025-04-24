@@ -11,40 +11,41 @@ const Blogs = () => {
     );
   };
 
+  
   return (
-    <div className="bg-gray-50 p-6">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold mb-6 text-center  ">Blog FAQs</h1>
-        {Array.isArray(blogs) && blogs.length > 0 ? (
-          blogs.map((blog, index) => (
-            <div
-              key={blog.id}
-              className="mb-4 rounded-xl shadow-md bg-white-50 dark:bg-gray-800 p-4 transition-all hover:bg-gray-200"
+    <div className="bg-gray-50 dark:bg-gray-900 p-6 sm:p-8 lg:p-10">
+    <div className="max-w-4xl mx-auto">
+      <h1 className="text-3xl sm:text-4xl font-bold mb-6 text-center">Blog FAQs</h1>
+      {Array.isArray(blogs) && blogs.length > 0 ? (
+        blogs.map((blog, index) => (
+          <div
+            key={blog.id}
+            className="mb-4 rounded-xl shadow-md bg-white dark:bg-gray-800 p-4 transition-all hover:bg-gray-200"
+          >
+            <button
+              onClick={() => toggleIndex(index)}
+              className="w-full text-left text-xl sm:text-2xl font-semibold cursor-pointer"
             >
-              <button
-                onClick={() => toggleIndex(index)}
-                className="w-full text-left text-xl font-semibold cursor-pointer  "
-              >
-                {blog.question}
-              </button>
-              {openIndexes.includes(index) && (
-                <div className="mt-3 border-t border-dashed pt-3">
-                  <p
-                    className="text-gray-700 dark:text-gray-300"
-                    dangerouslySetInnerHTML={{ __html: blog.answer }}
-                  />
-                <hr className='pt-2 border-dashed opacity-30 mt-4' />
-
-                  <p className="text-sm text-gray-500 italic mt-2">{blog.added_at}</p>
-                </div>
-              )}
-            </div>
-          ))
-        ) : (
-          <p className="text-center text-gray-500">No blogs found.</p>
-        )}
-      </div>
+              {blog.question}
+            </button>
+            {openIndexes.includes(index) && (
+              <div className="mt-3 border-t border-dashed pt-3">
+                <p
+                  className="text-gray-700 dark:text-gray-300"
+                  dangerouslySetInnerHTML={{ __html: blog.answer }}
+                />
+                <hr className="pt-2 border-dashed opacity-30 mt-4" />
+                <p className="text-sm sm:text-base text-gray-500 italic mt-2">{blog.added_at}</p>
+              </div>
+            )}
+          </div>
+        ))
+      ) : (
+        <p className="text-center text-gray-500">No blogs found.</p>
+      )}
     </div>
+  </div>
+  
   );
 };
 

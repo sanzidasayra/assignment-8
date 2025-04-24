@@ -10,7 +10,8 @@
     "availability": "Monday, Tuesday, Wednesday",
     "availabilityStatus": "Available",
     "workingAt": "CityCare General Hospital",
-    "consultationFee": 500
+    "consultationFee": 500,
+    "designation": "Consultant Internal Medicine"
   },
   {
     "id": 2,
@@ -23,7 +24,8 @@
     "availability": "Saturday, Sunday, Monday",
     "availabilityStatus":"Available",
     "workingAt": "Metro Orthopaedic Center",
-    "consultationFee": 600
+    "consultationFee": 600,
+    "designation": "Senior Orthopaedic Surgeon"
   },
   {
     "id": 3,
@@ -36,7 +38,8 @@
     "availability": "Sunday, Monday, Tuesday",
     "availabilityStatus": "Available",
     "workingAt": "Sunrise Women's Hospital",
-    "consultationFee": 550
+    "consultationFee": 550,
+    "designation": "Consultant Gynecologist"
   },
   {
     "id": 4,
@@ -49,7 +52,8 @@
     "availability": "Tuesday, Wednesday, Thursday",
     "availabilityStatus":"Available",
     "workingAt": "Happy Kids Pediatric Hospital",
-    "consultationFee": 500
+    "consultationFee": 500,
+    "designation": "Pediatric Consultant"
   },
   {
     "id": 5,
@@ -62,7 +66,8 @@
     "availability": "Friday, Saturday, Sunday",
     "availabilityStatus": "Available",
     "workingAt": "HeartBeat Cardiac Institute",
-    "consultationFee": 700
+    "consultationFee": 700,
+    "designation": "Cardiologist"
   },
   {
     "id": 6,
@@ -75,7 +80,8 @@
     "availability": "Friday, Saturday, Sunday",
     "availabilityStatus": "Available",
     "workingAt": "SkinGlow Dermatology Clinic",
-    "consultationFee": 450
+    "consultationFee": 450,
+    "designation": "Dermatologist"
   },
   {
     "id": 7,
@@ -88,7 +94,8 @@
     "availability": "Monday, Tuesday, Wednesday",
     "availabilityStatus": "Available",
     "workingAt": "ClearSound ENT Hospital",
-    "consultationFee": 480
+    "consultationFee": 480,
+    "designation": "ENT Specialist"
   },
   {
     "id": 8,
@@ -101,7 +108,8 @@
     "availability": "Monday, Tuesday, Wednesday",
     "availabilityStatus": "Available",
     "workingAt": "NeuroPlus Specialty Center",
-    "consultationFee": 750
+    "consultationFee": 750,
+    "designation": "Neurologist"
   },
   {
     "id": 9,
@@ -114,7 +122,8 @@
     "availability": "Saturday, Sunday, Monday",
     "availabilityStatus": "Available",
     "workingAt": "VisionCare Eye Hospital",
-    "consultationFee": 420
+    "consultationFee": 420,
+    "designation": "Ophthalmologist"
   },
   {
     "id": 10,
@@ -127,7 +136,8 @@
     "availability": "Saturday, Sunday, Monday",
     "availabilityStatus": "Available",
     "workingAt": "MindWell Psychiatry Center",
-    "consultationFee": 600
+    "consultationFee": 600,
+    "designation": "Psychiatrist"
   },
   {
     "id": 11,
@@ -140,7 +150,8 @@
     "availability": "Sunday, Monday, Tuesday",
     "availabilityStatus": "Available",
     "workingAt": "Hope Oncology Institute",
-    "consultationFee": 800
+    "consultationFee": 1800,
+    "designation": "Oncologist"
   },
   {
     "id": 12,
@@ -153,6 +164,7 @@
     "availability": "Saturday, Sunday, Monday",
     "availabilityStatus": "Available",
     "workingAt": "UroHealth Urology Clinic",
-    "consultationFee": 650
+    "consultationFee": 650,
+    "designation": "Urologist"
   }
 ]
